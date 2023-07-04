@@ -3,7 +3,7 @@ import socket
 import threading
 
 # Connection Data
-host = 'ENTER YOUR IP'
+host = '91.200.148.112'
 port = 55555
 
 # Starting Server
@@ -16,11 +16,15 @@ clients = []
 nicknames = []
 
 # Sending Messages To All Connected Clients
+
+
 def broadcast(message):
     for client in clients:
         client.send(message)
 
 # Handling Messages From Clients
+
+
 def handle(client):
     while True:
         try:
@@ -38,6 +42,8 @@ def handle(client):
             break
 
 # Receiving / Listening Function
+
+
 def receive():
     while True:
         # Accept Connection
@@ -58,6 +64,7 @@ def receive():
         # Start Handling Thread For Client
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
+
 
 print("Server if listening...")
 receive()

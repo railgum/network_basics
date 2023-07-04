@@ -6,9 +6,11 @@ nickname = input("Choose your nickname: ")
 
 # Connecting To Server
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('ENTER YOUR IP SERVER ADDRESS', 55555))
+client.connect(('91.200.148.112', 55555))
 
 # Listening to Server and Sending Nickname
+
+
 def receive():
     while True:
         try:
@@ -25,10 +27,12 @@ def receive():
             client.close()
             break
 
+
 def write():
     while True:
         message = '{}: {}'.format(nickname, input(''))
         client.send(message.encode('ascii'))
+
 
 # Starting Threads For Listening And Writing
 receive_thread = threading.Thread(target=receive)
